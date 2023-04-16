@@ -1,10 +1,6 @@
 import Image from "next/image";
-import { ProductData } from "./interfaces";
+import { ProductProps } from "./interfaces";
 import Link from "next/link";
-
-interface ProductProps {
-  product: ProductData;
-}
 
 function Product({ product: { name, slug, price, image } }: ProductProps) {
   return (

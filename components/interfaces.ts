@@ -21,3 +21,6 @@ export interface BannerData {
   discount: string;
   saleTime: string;
 }
+export interface ProductProps {
+  product: ProductData;
+}
