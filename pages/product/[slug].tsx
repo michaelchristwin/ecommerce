@@ -23,9 +23,31 @@ function ProductDetails({ productdata, allproducts }: Props) {
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <Image src={images[0]} width={400} height={400} alt={`product`} />
+            <Image
+              src={images[index]}
+              width={350}
+              height={350}
+              alt={`product`}
+              className="product-detail-image"
+            />
           </div>
-          {/* <div className="small-images-container"></div> */}
+          <div className="small-images-container">
+            {images.map((image, i) => {
+              return (
+                <Image
+                  src={image}
+                  width={100}
+                  height={100}
+                  alt="options"
+                  key={image}
+                  onMouseEnter={() => setIndex(i)}
+                  className={
+                    i === index ? "small-image selected-image" : "small-image"
+                  }
+                />
+              );
+            })}
+          </div>
         </div>
         <div className="product-detail-desc">
           <h1>{name}</h1>

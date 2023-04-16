@@ -4,8 +4,7 @@ import Link from "next/link";
 
 function Product({ product }: ProductProps) {
   const { images, slug, name, price } = product;
-  console.log(images[0]);
-  // console.log(imageUrls);
+
   return (
     <div>
       <Link href={`/product/${slug}`}>
