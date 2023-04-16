@@ -2,13 +2,16 @@ import Image from "next/image";
 import { ProductProps } from "./interfaces";
 import Link from "next/link";
 
-function Product({ product: { name, slug, price, image } }: ProductProps) {
+function Product({ product }: ProductProps) {
+  const { images, slug, name, price } = product;
+  console.log(images[0]);
+  // console.log(imageUrls);
   return (
     <div>
       <Link href={`/product/${slug}`}>
         <div className="product-card">
           <Image
-            src={`${image}`}
+            src={images[0]}
             height={250}
             width={250}
             alt={`${name}`}

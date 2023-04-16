@@ -1,9 +1,12 @@
 export interface ProductData {
   name: string;
-  image: string;
+  images: string;
   price: number;
   details: string;
   slug: string;
+}
+export interface Image {
+  image: string;
 }
 export interface HomeProps {
   productdata: ProductData[];

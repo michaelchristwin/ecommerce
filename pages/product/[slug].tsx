@@ -1,5 +1,5 @@
 import { Product } from "@/components";
-import { ProductData, HomeProps } from "@/components/interfaces";
+import { ProductData } from "@/components/interfaces";
 import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
@@ -15,15 +15,15 @@ interface Props {
 }
 
 function ProductDetails({ productdata, allproducts }: Props) {
-  const { image, name, details, price, slug } = productdata;
+  const { images, name, details, price, slug } = productdata;
   const [index, setIndex] = useState(0);
-
+  // console.log(images);
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <Image src={image} width={400} height={400} alt={`product`} />
+            <Image src={images[0]} width={400} height={400} alt={`product`} />
           </div>
           {/* <div className="small-images-container"></div> */}
         </div>
@@ -99,7 +99,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
     }
   );
   const allproducts = response2.data;
-  const productdata = JSON.parse(JSON.stringify(response.data));
+  const productdata = response.data;
   return {
     props: {
       productdata,
@@ -122,6 +122,6 @@ export async function getStaticPaths() {
   const paths = allproducts.map((prod) => ({ params: { slug: prod.slug } }));
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
