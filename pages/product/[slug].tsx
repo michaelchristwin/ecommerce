@@ -1,5 +1,6 @@
 import { Product } from "@/components";
 import { ProductData } from "@/components/interfaces";
+import { useStateContext } from "@/context/StateContext";
 import axios from "axios";
 import Image from "next/image";
 import { useState } from "react";
@@ -9,6 +10,7 @@ import {
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
+
 interface Props {
   allproducts: ProductData[];
   productdata: ProductData;
@@ -17,7 +19,7 @@ interface Props {
 function ProductDetails({ productdata, allproducts }: Props) {
   const { images, name, details, price, slug } = productdata;
   const [index, setIndex] = useState(0);
-  // console.log(images);
+  const { qty, inc, dec, onAdd } = useStateContext();
   return (
     <div>
       <div className="product-detail-container">
@@ -67,17 +69,21 @@ function ProductDetails({ productdata, allproducts }: Props) {
           <div className="quantity">
             <h3>Quantity</h3>
             <p className="quantity-desc flex">
-              <span className="minus">
+              <span className="minus" onClick={dec}>
                 <AiOutlineMinus />
               </span>
-              <span className="num">0</span>
-              <span className="plus">
+              <span className="num">{qty}</span>
+              <span className="plus" onClick={inc}>
                 <AiOutlinePlus />
               </span>
             </p>
           </div>
           <div className="buttons">
-            <button type="button" className="add-to-cart">
+            <button
+              type="button"
+              className="add-to-cart"
+              onClick={() => onAdd(productdata, qty)}
+            >
               Add to Cart
             </button>
             <button type="button" className="buy-now">
