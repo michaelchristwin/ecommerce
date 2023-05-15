@@ -108,32 +108,43 @@ function ProductDetails({ productdata, allproducts }: Props) {
 export default ProductDetails;
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
-  const response = await axios.get<ProductData>(
-    `http://127.0.0.1:8000/api/products/${params.slug}/`,
-    {
-      headers: {
-        "Content-Type": "application/json",
+  try {
+    const response = await axios.get<ProductData>(
+      `http://127.0.0.1:8000/api/products/${params.slug}/`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+    const response2 = await axios.get<ProductData[]>(
+      `http://127.0.0.1:8000/api/products/`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+    const allproducts = response2.data;
+    const productdata = response.data;
+    return {
+      props: {
+        productdata,
+        allproducts,
       },
-      withCredentials: true,
-    }
-  );
-  const response2 = await axios.get<ProductData[]>(
-    `http://127.0.0.1:8000/api/products/`,
-    {
-      headers: {
-        "Content-Type": "application/json",
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      props: {
+        productdata: {},
+        allproducts: [],
+        error: "Error fetching product data",
       },
-      withCredentials: true,
-    }
-  );
-  const allproducts = response2.data;
-  const productdata = response.data;
-  return {
-    props: {
-      productdata,
-      allproducts,
-    },
-  };
+    };
+  }
 }
 
 export async function getStaticPaths() {
@@ -150,6 +161,6 @@ export async function getStaticPaths() {
   const paths = allproducts.map((prod) => ({ params: { slug: prod.slug } }));
   return {
     paths,
-    fallback: "blocking",
+    fallback: true,
   };
 }
