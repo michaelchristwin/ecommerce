@@ -24,7 +24,7 @@ export default Home;
 
 export async function getServerSideProps() {
   const response = axios.get<ProductData[]>(
-    "http://127.0.0.1:8000/api/products/",
+    "http://localhost:5050/api/products/",
     {
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export async function getServerSideProps() {
     }
   );
   const response2 = axios.get<BannerData[]>(
-    "http://127.0.0.1:8000/api/banners/",
+    "http://localhost:5050/api/banners/",
     {
       headers: {
         "Content-Type": "application/json",

@@ -1,4 +1,3 @@
-import { ProductData } from "@/components/interfaces";
 import { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 

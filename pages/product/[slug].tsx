@@ -110,7 +110,7 @@ export default ProductDetails;
 export async function getStaticProps({ params }: { params: { slug: string } }) {
   try {
     const response = await axios.get<ProductData>(
-      `http://127.0.0.1:8000/api/products/${params.slug}/`,
+      `http://localhost:5050/api/products/${params.slug}/`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -119,7 +119,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       }
     );
     const response2 = await axios.get<ProductData[]>(
-      `http://127.0.0.1:8000/api/products/`,
+      `http://localhost:5050/api/products/`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -149,7 +149,7 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 
 export async function getStaticPaths() {
   const response = await axios.get<ProductData[]>(
-    `http://127.0.0.1:8000/api/products/`,
+    `http://localhost:5050/api/products/`,
     {
       headers: {
         "Content-Type": "application/json",
