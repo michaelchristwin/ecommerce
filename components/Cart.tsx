@@ -10,6 +10,7 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { Toast } from "react-hot-toast";
 import { useStateContext } from "@/context/StateContext";
 import Image from "next/image";
+import { urlFor } from "@/lib/client";
 
 function Cart() {
   const cartRef = useRef<HTMLDivElement>(null);
@@ -54,7 +55,7 @@ function Cart() {
               <div className="product" key={item.name}>
                 <Image
                   className="cart-product-image"
-                  src={item.images[0]}
+                  src={urlFor(item.images[0]).url()}
                   width={100}
                   height={100}
                   alt="item"

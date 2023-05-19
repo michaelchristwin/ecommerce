@@ -1,9 +1,9 @@
 export interface ProductData {
   name: string;
-  images: string[];
+  images: any;
   price: number;
   details: string;
-  slug: string;
+  slug: any;
 }
 export interface Image {
   image: string;

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BannerData } from "./interfaces";
 import Image from "next/image";
+import { urlFor } from "@/lib/client";
 
 interface FooterBannerProps {
   footerBanner: BannerData;
@@ -9,11 +10,11 @@ interface FooterBannerProps {
 function FooterBanner({
   footerBanner: {
     discount,
+    saleTime,
     desc,
     largeText,
     largeText2,
     image,
-    saleTime,
     smallText,
     product,
     buttonText,
@@ -37,7 +38,7 @@ function FooterBanner({
           </Link>
         </div>
         <Image
-          src={`${image}`}
+          src={urlFor(image).url()}
           className="footer-banner-image"
           width={200}
           height={200}

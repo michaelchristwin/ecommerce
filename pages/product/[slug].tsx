@@ -2,6 +2,7 @@ import { Product } from "@/components";
 import { ProductData } from "@/components/interfaces";
 import { useStateContext } from "@/context/StateContext";
 import axios from "axios";
+import { client, urlFor } from "../../lib/client";
 import Image from "next/image";
 import { useState } from "react";
 import {
@@ -13,20 +14,22 @@ import {
 
 interface Props {
   allproducts: ProductData[];
-  productdata: ProductData;
+  productdata: ProductData[];
 }
 
 function ProductDetails({ productdata, allproducts }: Props) {
-  const { images, name, details, price, slug } = productdata;
+  const { images, name, details, price, slug } = productdata[0];
   const [index, setIndex] = useState(0);
   const { qty, inc, dec, onAdd } = useStateContext();
+  console.log(productdata);
+  // console.log(allproducts);
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
             <Image
-              src={images[index]}
+              src={urlFor(images[index]).url()}
               width={350}
               height={350}
               alt={`product`}
@@ -34,14 +37,14 @@ function ProductDetails({ productdata, allproducts }: Props) {
             />
           </div>
           <div className="small-images-container">
-            {images.map((image, i) => {
+            {images.map((img: any, i: any) => {
               return (
                 <Image
-                  src={image}
+                  src={urlFor(img).url()}
                   width={100}
                   height={100}
                   alt="options"
-                  key={image}
+                  key={i}
                   onMouseEnter={() => setIndex(i)}
                   className={
                     i === index ? "small-image selected-image" : "small-image"
@@ -109,26 +112,11 @@ export default ProductDetails;
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {
   try {
-    const response = await axios.get<ProductData>(
-      `http://localhost:5050/api/products/${params.slug}/`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      }
-    );
-    const response2 = await axios.get<ProductData[]>(
-      `http://localhost:5050/api/products/`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      }
-    );
-    const allproducts = response2.data;
-    const productdata = response.data;
+    const productquery = `*[_type == "product" && slug.current == '${params.slug}']`;
+    const query = `*[_type == "product"]`;
+
+    const allproducts = await client.fetch(query);
+    const productdata = await client.fetch(productquery);
     return {
       props: {
         productdata,
@@ -148,17 +136,12 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
 }
 
 export async function getStaticPaths() {
-  const response = await axios.get<ProductData[]>(
-    `http://localhost:5050/api/products/`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    }
-  );
-  const allproducts = response.data;
-  const paths = allproducts.map((prod) => ({ params: { slug: prod.slug } }));
+  const productquery = `*[_type == "product"]`;
+
+  const allproducts = await client.fetch(productquery);
+  const paths = allproducts.map((prod: ProductData) => ({
+    params: { slug: prod.slug.current },
+  }));
   return {
     paths,
     fallback: true,
