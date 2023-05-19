@@ -1,12 +1,13 @@
 import { Product, FooterBanner, HeroBanner, Footer } from "@/components";
 import axios from "axios";
-import { HomeProps } from "../components/interfaces";
+import { BannerData, HomeProps, ProductData } from "../components/interfaces";
 import { client } from "../lib/client";
 
 function Home({ productdata, bannerdata }: HomeProps) {
+  console.log(productdata);
   return (
     <>
-      <HeroBanner heroBanner={bannerdata.length ? bannerdata[0] : undefined} />
+      <HeroBanner heroBanner={bannerdata[0]} />
       <div className="products-heading">
         <h2>Best Selling Products</h2>
         <p>Speakers of many variations</p>
@@ -24,10 +25,14 @@ function Home({ productdata, bannerdata }: HomeProps) {
 export default Home;
 
 export async function getServerSideProps() {
-  const query = '*[_type == "product"]';
-  const bannerQuery = '*[_type == "banner"]';
-  const productdata = await client.fetch(query);
-  const bannerdata = await client.fetch(bannerQuery);
+  const response1 = await axios.get<ProductData>(
+    "http://localhost:3000/api/getProducts"
+  );
+  const response2 = await axios.get<BannerData>(
+    "http://localhost:3000/api/getBanners"
+  );
+  const productdata = response1.data;
+  const bannerdata = response2.data;
   return {
     props: {
       productdata,

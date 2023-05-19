@@ -1,17 +1,17 @@
 export interface ProductData {
   name: string;
-  images: any;
+  images: string[];
   price: number;
   details: string;
-  slug: any;
+  slug: string;
 }
 export interface Image {
   image: string;
 }
-export interface HomeProps {
+export type HomeProps = {
   productdata: ProductData[];
   bannerdata: BannerData[];
-}
+};
 export interface BannerData {
   image: string;
   buttonText: string;

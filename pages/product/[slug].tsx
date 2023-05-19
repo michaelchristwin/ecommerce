@@ -11,36 +11,36 @@ import {
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
+import { GetStaticProps } from "next";
 
 interface Props {
   allproducts: ProductData[];
-  productdata: ProductData[];
+  productdata: ProductData;
 }
 
 function ProductDetails({ productdata, allproducts }: Props) {
-  const { images, name, details, price, slug } = productdata[0];
+  const { images, name, details, price, slug } = productdata;
   const [index, setIndex] = useState(0);
   const { qty, inc, dec, onAdd } = useStateContext();
   console.log(productdata);
-  // console.log(allproducts);
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <Image
-              src={urlFor(images[index]).url()}
+            {/* <Image
+              src={images[index]}
               width={350}
               height={350}
               alt={`product`}
               className="product-detail-image"
-            />
+            /> */}
           </div>
           <div className="small-images-container">
-            {images.map((img: any, i: any) => {
+            {/* {images.map((img: any, i: any) => {
               return (
                 <Image
-                  src={urlFor(img).url()}
+                  src={img}
                   width={100}
                   height={100}
                   alt="options"
@@ -51,7 +51,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
                   }
                 />
               );
-            })}
+            })} */}
           </div>
         </div>
         <div className="product-detail-desc">
@@ -110,13 +110,14 @@ function ProductDetails({ productdata, allproducts }: Props) {
 }
 export default ProductDetails;
 
-export async function getStaticProps({ params }: { params: { slug: string } }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    const productquery = `*[_type == "product" && slug.current == '${params.slug}']`;
-    const query = `*[_type == "product"]`;
-
-    const allproducts = await client.fetch(query);
-    const productdata = await client.fetch(productquery);
+    const response1 = await axios.get("http://localhost:3000/api/getProducts");
+    const response2 = await axios.get(
+      `http://localhost:3000/api/getProducts/${params?.slug}`
+    );
+    const productdata: ProductData = response2.data;
+    const allproducts: ProductData[] = response1.data;
     return {
       props: {
         productdata,
@@ -133,14 +134,13 @@ export async function getStaticProps({ params }: { params: { slug: string } }) {
       },
     };
   }
-}
+};
 
 export async function getStaticPaths() {
-  const productquery = `*[_type == "product"]`;
-
-  const allproducts = await client.fetch(productquery);
+  const response = await axios.get("http://localhost:3000/api/getProducts");
+  const allproducts = response.data;
   const paths = allproducts.map((prod: ProductData) => ({
-    params: { slug: prod.slug.current },
+    params: { slug: prod.slug },
   }));
   return {
     paths,

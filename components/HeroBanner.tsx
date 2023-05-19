@@ -4,7 +4,7 @@ import { BannerData } from "./interfaces";
 import { urlFor } from "@/lib/client";
 
 interface HeroBannerProps {
-  heroBanner?: BannerData;
+  heroBanner: BannerData;
 }
 
 function HeroBanner({ heroBanner }: HeroBannerProps) {
@@ -15,7 +15,7 @@ function HeroBanner({ heroBanner }: HeroBannerProps) {
         <h3>{heroBanner?.midText}</h3>
         <h1>{heroBanner?.largeText}</h1>
         <Image
-          src={urlFor(heroBanner?.image).url()}
+          src={heroBanner?.image}
           height={300}
           width={300}
           alt="Banner Image"

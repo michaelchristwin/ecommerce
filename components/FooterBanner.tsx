@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { BannerData } from "./interfaces";
 import Image from "next/image";
-import { urlFor } from "@/lib/client";
 
-interface FooterBannerProps {
+type FooterBannerProps = {
   footerBanner: BannerData;
-}
+};
 
 function FooterBanner({
   footerBanner: {
@@ -38,7 +37,7 @@ function FooterBanner({
           </Link>
         </div>
         <Image
-          src={urlFor(image).url()}
+          src={image}
           className="footer-banner-image"
           width={200}
           height={200}

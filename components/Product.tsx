@@ -5,13 +5,12 @@ import { urlFor } from "@/lib/client";
 
 function Product({ product }: any) {
   const { images, slug, name, price } = product;
-  console.log(images);
   return (
     <div>
-      <Link href={`/product/${slug.current}`}>
+      <Link href={`/product/${slug}`}>
         <div className="product-card">
           <Image
-            src={urlFor(images[0]).url()}
+            src={images[0]}
             height={250}
             width={250}
             alt={`${name}`}
