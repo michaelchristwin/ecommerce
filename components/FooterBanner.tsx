@@ -37,7 +37,7 @@ function FooterBanner({
           </Link>
         </div>
         <Image
-          src={image}
+          src={`/images${image}`}
           className="footer-banner-image"
           width={200}
           height={200}

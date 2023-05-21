@@ -15,7 +15,7 @@ function HeroBanner({ heroBanner }: HeroBannerProps) {
         <h3>{heroBanner?.midText}</h3>
         <h1>{heroBanner?.largeText}</h1>
         <Image
-          src={heroBanner?.image}
+          src={`/images${heroBanner?.image}`}
           height={300}
           width={300}
           alt="Banner Image"

@@ -22,25 +22,25 @@ function ProductDetails({ productdata, allproducts }: Props) {
   const { images, name, details, price, slug } = productdata;
   const [index, setIndex] = useState(0);
   const { qty, inc, dec, onAdd } = useStateContext();
-  console.log(productdata);
+
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
             <Image
-              src={images[index]}
+              src={`/images${images[index]}`}
               width={350}
               height={350}
-              alt={`product`}
+              alt="product"
               className="product-detail-image"
             />
           </div>
           <div className="small-images-container">
-            {images.map((img: any, i: any) => {
+            {images.map((img: string, i: any) => {
               return (
                 <Image
-                  src={img}
+                  src={`/images${img}`}
                   width={100}
                   height={100}
                   alt="options"

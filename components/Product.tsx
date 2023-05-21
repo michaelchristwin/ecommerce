@@ -9,7 +9,7 @@ function Product({ product }: any) {
       <Link href={`/product/${slug}`}>
         <div className="product-card">
           <Image
-            src={images[0]}
+            src={`/images${images[0]}`}
             height={250}
             width={250}
             alt={`${name}`}

@@ -14,7 +14,7 @@ export default async function getProduct(
     const data = await db.collection("products").findOne({ slug: params.slug });
 
     if (data) {
-      console.log("Retrieved data:", data);
+      // console.log("Retrieved data:", data);
       res.status(200).json(data);
     } else {
       console.log("Product not found");
