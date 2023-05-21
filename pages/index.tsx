@@ -1,10 +1,8 @@
 import { Product, FooterBanner, HeroBanner, Footer } from "@/components";
 import axios from "axios";
 import { BannerData, HomeProps, ProductData } from "../components/interfaces";
-import { client } from "../lib/client";
 
 function Home({ productdata, bannerdata }: HomeProps) {
-  console.log(productdata);
   return (
     <>
       <HeroBanner heroBanner={bannerdata[0]} />

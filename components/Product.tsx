@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { ProductProps } from "./interfaces";
 import Link from "next/link";
-import { urlFor } from "@/lib/client";
 
 function Product({ product }: any) {
   const { images, slug, name, price } = product;

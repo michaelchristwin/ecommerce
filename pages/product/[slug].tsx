@@ -11,7 +11,7 @@ import {
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
-import { GetStaticProps } from "next";
+import { GetStaticPropsContext } from "next";
 
 interface Props {
   allproducts: ProductData[];
@@ -28,16 +28,16 @@ function ProductDetails({ productdata, allproducts }: Props) {
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            {/* <Image
+            <Image
               src={images[index]}
               width={350}
               height={350}
               alt={`product`}
               className="product-detail-image"
-            /> */}
+            />
           </div>
           <div className="small-images-container">
-            {/* {images.map((img: any, i: any) => {
+            {images.map((img: any, i: any) => {
               return (
                 <Image
                   src={img}
@@ -51,7 +51,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
                   }
                 />
               );
-            })} */}
+            })}
           </div>
         </div>
         <div className="product-detail-desc">
@@ -110,12 +110,19 @@ function ProductDetails({ productdata, allproducts }: Props) {
 }
 export default ProductDetails;
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export async function getStaticProps({ params }: GetStaticPropsContext) {
+  if (!params || !params.slug) {
+    // Handle the case when the `slug` parameter is not present
+    return {
+      notFound: true,
+    };
+  }
+  const { slug } = params;
   try {
     const response1 = await axios.get("http://localhost:3000/api/getProducts");
-    const response2 = await axios.get(
-      `http://localhost:3000/api/getProducts/${params?.slug}`
-    );
+    const response2 = await axios.get(`http://localhost:3000/api/getProduct`, {
+      params: { slug: slug },
+    });
     const productdata: ProductData = response2.data;
     const allproducts: ProductData[] = response1.data;
     return {
@@ -134,7 +141,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
     };
   }
-};
+}
 
 export async function getStaticPaths() {
   const response = await axios.get("http://localhost:3000/api/getProducts");
