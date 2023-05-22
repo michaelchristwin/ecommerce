@@ -1,3 +1,4 @@
+import connectToDB from "@/lib/mongo";
 import clientPromise from "@/lib/mongo";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -6,7 +7,7 @@ export default async function getProducts(
   res: NextApiResponse
 ) {
   try {
-    const client = await clientPromise;
+    const client = await connectToDB();
     const db = client.db("test");
     const data = await db.collection("products").find({}).toArray();
     res.json(data);

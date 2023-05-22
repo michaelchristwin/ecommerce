@@ -1,3 +1,4 @@
+import connectToDB from "@/lib/mongo";
 import clientPromise from "@/lib/mongo";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -9,7 +10,7 @@ export default async function getProduct(
   console.log("Requested slug:", params.slug);
 
   try {
-    const client = await clientPromise;
+    const client = await connectToDB();
     const db = client.db("test");
     const data = await db.collection("products").findOne({ slug: params.slug });
 
