@@ -25,10 +25,10 @@ export default Home;
 export async function getServerSideProps() {
   try {
     const response1 = await axios.get<ProductData>(
-      "http://sound-two.vercel.app/api/getProducts"
+      "http://ecommerce-five-flame.vercel.app/api/getProducts"
     );
     const response2 = await axios.get<BannerData>(
-      "http://sound-two.vercel.app/api/getBanners"
+      "http://ecommerce-five-flame.vercel.app/api/getBanners"
     );
     const productdata = response1.data;
     const bannerdata = response2.data;

@@ -119,10 +119,10 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
   const { slug } = params;
   try {
     const response1 = await axios.get(
-      "http://sound-two.vercel.app/api/getProducts"
+      "http://ecommerce-five-flame.vercel.app/api/getProducts"
     );
     const response2 = await axios.get(
-      `http://sound-two.vercel.app/api/getProduct`,
+      `http://ecommerce-five-flame.vercel.app/api/getProduct`,
       {
         params: { slug: slug },
       }
@@ -149,7 +149,7 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
 
 export async function getStaticPaths() {
   const response = await axios.get(
-    "http://sound-two.vercel.app/api/getProducts"
+    "http://ecommerce-five-flame.vercel.app/api/getProducts"
   );
   const allproducts = response.data;
   const paths = allproducts.map((prod: ProductData) => ({
