@@ -3,7 +3,8 @@ import { MongoClient, MongoClientOptions } from "mongodb";
 
 // dotenv.config();
 
-const uri = process.env.ATLAS_URL;
+const uri =
+  "mongodb+srv://kelechukwuchristwin:Lryx35ymLgczfXJ@michael.fqimwas.mongodb.net/test";
 const options: MongoClientOptions = {};
 
 let clientPromise: Promise<MongoClient> | null = null; // Store the client promise
