@@ -23,7 +23,7 @@ function Cart() {
   } = useStateContext();
   return (
     <div className="cart-wrapper" ref={cartRef}>
-      {/* <div className="cart-container">
+      <div className="cart-container">
         <button
           type="button"
           className="cart-heading"
@@ -111,7 +111,7 @@ function Cart() {
             </div>
           </div>
         )}
-      </div> */}
+      </div>
     </div>
   );
 }

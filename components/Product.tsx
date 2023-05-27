@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ProductProps } from "./interfaces";
 import Link from "next/link";
 
-function Product({ product }: any) {
+function Product({ product }: ProductProps) {
   const { images, slug, name, price } = product;
   return (
     <div>
