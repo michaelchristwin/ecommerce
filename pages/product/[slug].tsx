@@ -2,7 +2,6 @@ import { Product } from "@/components";
 import { ProductData } from "@/components/interfaces";
 import { useStateContext } from "@/context/StateContext";
 import axios from "axios";
-import { client, urlFor } from "../../lib/client";
 import Image from "next/image";
 import { useState } from "react";
 import {

@@ -1,5 +1,4 @@
 import connectToDB from "@/lib/mongo";
-import clientPromise from "@/lib/mongo";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function getBanners(

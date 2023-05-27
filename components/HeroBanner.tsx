@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BannerData } from "./interfaces";
-import { urlFor } from "@/lib/client";
 
 interface HeroBannerProps {
   heroBanner: BannerData;
