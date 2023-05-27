@@ -1,7 +1,7 @@
 import { MongoClient, MongoClientOptions } from "mongodb";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 
-dotenv.config();
+// dotenv.config();
 
 const uri = process.env.ATLAS_URL;
 const options: MongoClientOptions = {};
