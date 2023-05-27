@@ -22,7 +22,7 @@ function FooterBanner({
 }: FooterBannerProps) {
   return (
     <div className="footer-banner-container">
-      <div className="banner-desc">
+      {/* <div className="banner-desc">
         <div className="left">
           <p>{discount}</p>
           <h3>{largeText}</h3>
@@ -43,7 +43,7 @@ function FooterBanner({
           height={200}
           alt={product}
         />
-      </div>
+      </div> */}
     </div>
   );
 }

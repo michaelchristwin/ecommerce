@@ -24,7 +24,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
 
   return (
     <div>
-      <div className="product-detail-container">
+      {/* <div className="product-detail-container">
         <div>
           <div className="image-container">
             <Image
@@ -93,15 +93,15 @@ function ProductDetails({ productdata, allproducts }: Props) {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="maylike-products-wrapper">
         <h2>You may also like</h2>
         <div className="marquee">
-          <div className="maylike-products-container track">
+          {/* <div className="maylike-products-container track">
             {allproducts.map((product) => {
               return <Product product={product} key={product.name} />;
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
@@ -109,54 +109,54 @@ function ProductDetails({ productdata, allproducts }: Props) {
 }
 export default ProductDetails;
 
-export async function getStaticProps({ params }: GetStaticPropsContext) {
-  if (!params || !params.slug) {
-    // Handle the case when the `slug` parameter is not present
-    return {
-      notFound: true,
-    };
-  }
-  const { slug } = params;
-  try {
-    const response1 = await axios.get(
-      "http://ecommerce-five-flame.vercel.app/api/getProducts"
-    );
-    const response2 = await axios.get(
-      `http://ecommerce-five-flame.vercel.app/api/getProduct`,
-      {
-        params: { slug: slug },
-      }
-    );
-    const productdata: ProductData = response2.data;
-    const allproducts: ProductData[] = response1.data;
-    return {
-      props: {
-        productdata,
-        allproducts,
-      },
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      props: {
-        productdata: {},
-        allproducts: [],
-        error: "Error fetching product data",
-      },
-    };
-  }
-}
+// export async function getStaticProps({ params }: GetStaticPropsContext) {
+//   if (!params || !params.slug) {
+//     // Handle the case when the `slug` parameter is not present
+//     return {
+//       notFound: true,
+//     };
+//   }
+//   const { slug } = params;
+//   try {
+//     const response1 = await axios.get(
+//       "http://ecommerce-five-flame.vercel.app/api/getProducts"
+//     );
+//     const response2 = await axios.get(
+//       `http://ecommerce-five-flame.vercel.app/api/getProduct`,
+//       {
+//         params: { slug: slug },
+//       }
+//     );
+//     const productdata: ProductData = response2.data;
+//     const allproducts: ProductData[] = response1.data;
+//     return {
+//       props: {
+//         productdata,
+//         allproducts,
+//       },
+//     };
+//   } catch (error) {
+//     console.error(error);
+//     return {
+//       props: {
+//         productdata: {},
+//         allproducts: [],
+//         error: "Error fetching product data",
+//       },
+//     };
+//   }
+// }
 
-export async function getStaticPaths() {
-  const response = await axios.get(
-    "http://ecommerce-five-flame.vercel.app/api/getProducts"
-  );
-  const allproducts = response.data;
-  const paths = allproducts.map((prod: ProductData) => ({
-    params: { slug: prod.slug },
-  }));
-  return {
-    paths,
-    fallback: true,
-  };
-}
+// export async function getStaticPaths() {
+//   const response = await axios.get(
+//     "http://ecommerce-five-flame.vercel.app/api/getProducts"
+//   );
+//   const allproducts = response.data;
+//   const paths = allproducts.map((prod: ProductData) => ({
+//     params: { slug: prod.slug },
+//   }));
+//   return {
+//     paths,
+//     fallback: true,
+//   };
+// }

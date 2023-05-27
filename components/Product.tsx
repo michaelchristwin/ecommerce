@@ -6,7 +6,7 @@ function Product({ product }: any) {
   const { images, slug, name, price } = product;
   return (
     <div>
-      <Link href={`/product/${slug}`}>
+      {/* <Link href={`/product/${slug}`}>
         <div className="product-card">
           <Image
             src={`/images${images[0]}`}
@@ -18,7 +18,7 @@ function Product({ product }: any) {
           <p className="product-name">{name}</p>
           <p className="product-price">${price}</p>
         </div>
-      </Link>
+      </Link> */}
     </div>
   );
 }
