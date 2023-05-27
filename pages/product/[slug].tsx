@@ -18,26 +18,27 @@ interface Props {
 }
 
 function ProductDetails({ productdata, allproducts }: Props) {
-  const { images, name, details, price, slug } = productdata;
+  console.log(productdata);
+  // const { images, name, details, price, slug } = productdata;
   const [index, setIndex] = useState(0);
   const { qty, inc, dec, onAdd } = useStateContext();
-  console.log(images);
+  //console.log(images);
 
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <Image
+            {/* <Image
               src={`/images${images[index]}`}
               width={350}
               height={350}
               alt="product"
               className="product-detail-image"
-            />
+            /> */}
           </div>
           <div className="small-images-container">
-            {images?.map((img: string, i: any) => {
+            {/* {images?.map((img: string, i: any) => {
               return (
                 <Image
                   src={`/images${img}`}
@@ -51,11 +52,11 @@ function ProductDetails({ productdata, allproducts }: Props) {
                   }
                 />
               );
-            })}
+            })} */}
           </div>
         </div>
         <div className="product-detail-desc">
-          <h1>{name}</h1>
+          {/* <h1>{name}</h1> */}
           <div className="reviews">
             <div className="flex">
               <AiFillStar />
@@ -67,8 +68,8 @@ function ProductDetails({ productdata, allproducts }: Props) {
             <p>(20)</p>
           </div>
           <h4>Details:</h4>
-          <p>{details}</p>
-          <p className="price">${price}</p>
+          {/* <p>{details}</p> */}
+          {/* <p className="price">${price}</p> */}
           <div className="quantity">
             <h3>Quantity</h3>
             <p className="quantity-desc flex">
