@@ -18,25 +18,25 @@ interface Props {
 }
 
 function ProductDetails({ productdata, allproducts }: Props) {
-  const { name, details, price, slug } = productdata;
+  const { images, name, details, price, slug } = productdata;
   const [index, setIndex] = useState(0);
   const { qty, inc, dec, onAdd } = useStateContext();
-  // console.log(images);
+  console.log(images);
 
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            {/* <Image
+            <Image
               src={`/images${images[index]}`}
               width={350}
               height={350}
               alt="product"
               className="product-detail-image"
-            /> */}
+            />
           </div>
-          {/* <div className="small-images-container">
+          <div className="small-images-container">
             {images?.map((img: string, i: any) => {
               return (
                 <Image
@@ -52,7 +52,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
                 />
               );
             })}
-          </div> */}
+          </div>
         </div>
         <div className="product-detail-desc">
           <h1>{name}</h1>
@@ -128,8 +128,8 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
         params: { slug: slug },
       }
     );
-    const productdata: ProductData = response2.data;
-    const allproducts: ProductData[] = response1.data;
+    const productdata: ProductData = await response2.data;
+    const allproducts: ProductData[] = await response1.data;
     return {
       props: {
         productdata,
