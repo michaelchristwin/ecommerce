@@ -2,15 +2,11 @@ import Image from "next/image";
 import { ProductProps } from "./interfaces";
 import Link from "next/link";
 
-function Product(
-  {
-    /* product }: any*/
-  }
-) {
-  //const { images, slug, name, price } = product;
+function Product({ product }: any) {
+  const { images, slug, name, price } = product;
   return (
     <div>
-      {/* <Link href={`/product/${slug}`}>
+      <Link href={`/product/${slug}`}>
         <div className="product-card">
           <Image
             src={`/images${images[0]}`}
@@ -22,7 +18,7 @@ function Product(
           <p className="product-name">{name}</p>
           <p className="product-price">${price}</p>
         </div>
-      </Link> */}
+      </Link>
     </div>
   );
 }

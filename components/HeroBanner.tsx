@@ -6,14 +6,10 @@ interface HeroBannerProps {
   heroBanner: BannerData;
 }
 
-function HeroBanner(
-  {
-    /* heroBanner }: HeroBannerProps*/
-  }
-) {
+function HeroBanner({ heroBanner }: HeroBannerProps) {
   return (
     <div className="hero-banner-container">
-      {/* <div>
+      <div>
         <p className="beats-solo">{heroBanner?.smallText}</p>
         <h3>{heroBanner?.midText}</h3>
         <h1>{heroBanner?.largeText}</h1>
@@ -33,7 +29,7 @@ function HeroBanner(
             <p>{heroBanner?.desc}</p>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
