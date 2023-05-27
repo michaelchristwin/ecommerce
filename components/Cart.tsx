@@ -23,7 +23,7 @@ function Cart() {
   } = useStateContext();
   return (
     <div className="cart-wrapper" ref={cartRef}>
-      <div className="cart-container">
+      {/* <div className="cart-container">
         <button
           type="button"
           className="cart-heading"
@@ -52,13 +52,13 @@ function Cart() {
           {cartItems.length >= 1 &&
             cartItems.map((item, index) => (
               <div className="product" key={item.name}>
-                {/* <Image
+                <Image
                   className="cart-product-image"
                   src={`/images${item.images[0]}`}
                   width={100}
                   height={100}
                   alt="item"
-                /> */}
+                />
                 <div className="item-desc">
                   <div className="flex top">
                     <h5>{item.name}</h5>
@@ -111,7 +111,7 @@ function Cart() {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }

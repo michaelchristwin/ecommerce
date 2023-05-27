@@ -6,7 +6,11 @@ interface HeroBannerProps {
   heroBanner: BannerData;
 }
 
-function HeroBanner({ heroBanner }: HeroBannerProps) {
+function HeroBanner(
+  {
+    /* heroBanner }: HeroBannerProps*/
+  }
+) {
   return (
     <div className="hero-banner-container">
       {/* <div>

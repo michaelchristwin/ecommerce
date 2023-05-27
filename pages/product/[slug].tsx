@@ -17,8 +17,12 @@ interface Props {
   productdata: ProductData;
 }
 
-function ProductDetails({ productdata, allproducts }: Props) {
-  const { images, name, details, price, slug } = productdata;
+function ProductDetails(
+  {
+    /* productdata, allproducts }: Props*/
+  }
+) {
+  // const { images, name, details, price, slug } = productdata;
   const [index, setIndex] = useState(0);
   const { qty, inc, dec, onAdd } = useStateContext();
 
