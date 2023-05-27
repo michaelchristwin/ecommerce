@@ -118,10 +118,15 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
   }
   const { slug } = params;
   try {
-    const response1 = await axios.get("http://localhost:3000/api/getProducts");
-    const response2 = await axios.get(`http://localhost:3000/api/getProduct`, {
-      params: { slug: slug },
-    });
+    const response1 = await axios.get(
+      "http://sound-two.vercel.app/api/getProducts"
+    );
+    const response2 = await axios.get(
+      `http://sound-two.vercel.app/api/getProduct`,
+      {
+        params: { slug: slug },
+      }
+    );
     const productdata: ProductData = response2.data;
     const allproducts: ProductData[] = response1.data;
     return {
@@ -143,7 +148,9 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
 }
 
 export async function getStaticPaths() {
-  const response = await axios.get("http://localhost:3000/api/getProducts");
+  const response = await axios.get(
+    "http://sound-two.vercel.app/api/getProducts"
+  );
   const allproducts = response.data;
   const paths = allproducts.map((prod: ProductData) => ({
     params: { slug: prod.slug },
