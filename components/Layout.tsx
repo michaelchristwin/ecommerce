@@ -10,7 +10,12 @@ function Layout({ children }: ParentComponentProps) {
   return (
     <div className="layout">
       <Head>
-        <title>Mikey Store</title>
+        <title>SoundKit Mart</title>
+        <meta
+          name="description"
+          content="SoundKit Mart is a demo ecommerce webapp developed by Michael Christwin."
+        />
+        <meta name="robots" content="index, follow" />
       </Head>
       <header>
         <Navbar />
