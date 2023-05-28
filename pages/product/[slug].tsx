@@ -29,7 +29,9 @@ function ProductDetails({ productdata, allproducts }: Props) {
         <div>
           <div className="image-container">
             <Image
-              src={`/images${productdata.images[index]}`}
+              src={
+                productdata.images ? `/images${productdata.images[index]}` : ""
+              }
               width={350}
               height={350}
               alt="product"
@@ -40,7 +42,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
             {productdata.images?.map((img: string, i: any) => {
               return (
                 <Image
-                  src={`/images${img}`}
+                  src={img ? `/images${img}` : ""}
                   width={100}
                   height={100}
                   alt="options"
