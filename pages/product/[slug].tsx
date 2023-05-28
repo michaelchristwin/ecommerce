@@ -19,10 +19,8 @@ interface Props {
 
 function ProductDetails({ productdata, allproducts }: Props) {
   console.log(productdata);
-  const { images, name, details, price, slug } = productdata;
   const [index, setIndex] = useState(0);
   const { qty, inc, dec, onAdd } = useStateContext();
-  //console.log(images);
 
   return (
     <div>
@@ -30,7 +28,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
         <div>
           <div className="image-container">
             <Image
-              src={`/images${images[index]}`}
+              src={`/images${productdata.images[index]}`}
               width={350}
               height={350}
               alt="product"
@@ -38,7 +36,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
             />
           </div>
           <div className="small-images-container">
-            {images?.map((img: string, i: any) => {
+            {productdata.images?.map((img: string, i: any) => {
               return (
                 <Image
                   src={`/images${img}`}
@@ -68,8 +66,8 @@ function ProductDetails({ productdata, allproducts }: Props) {
             <p>(20)</p>
           </div>
           <h4>Details:</h4>
-          <p>{details}</p>
-          <p className="price">${price}</p>
+          <p>{productdata.details}</p>
+          <p className="price">${productdata.price}</p>
           <div className="quantity">
             <h3>Quantity</h3>
             <p className="quantity-desc flex">
