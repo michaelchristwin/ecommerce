@@ -2,7 +2,8 @@ import { Product } from "@/components";
 import { ProductData } from "@/components/interfaces";
 import { useStateContext } from "@/context/StateContext";
 import axios from "axios";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+const Image = dynamic(() => import("next/image"), { ssr: false });
 import { useState } from "react";
 import {
   AiOutlineMinus,
@@ -54,7 +55,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
           </div>
         </div>
         <div className="product-detail-desc">
-          {/* <h1>{name}</h1> */}
+          <h1>{productdata.name ? productdata.name : ""}</h1>
           <div className="reviews">
             <div className="flex">
               <AiFillStar />
@@ -66,7 +67,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
             <p>(20)</p>
           </div>
           <h4>Details:</h4>
-          <p>{productdata.details}</p>
+          <p>{productdata.details ? productdata.details : ""}</p>
           <p className="price">${productdata.price}</p>
           <div className="quantity">
             <h3>Quantity</h3>
@@ -98,7 +99,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
         <h2>You may also like</h2>
         <div className="marquee">
           <div className="maylike-products-container track">
-            {allproducts.map((product) => {
+            {allproducts?.map((product) => {
               return <Product product={product} key={product.name} />;
             })}
           </div>
@@ -127,8 +128,8 @@ export async function getStaticProps({ params }: GetStaticPropsContext) {
         params: { slug: slug },
       }
     );
-    const productdata: ProductData = await response2.data;
-    const allproducts: ProductData[] = await response1.data;
+    const productdata: ProductData = response2.data;
+    const allproducts: ProductData[] = response1.data;
     return {
       props: {
         productdata,
