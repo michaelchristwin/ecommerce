@@ -38,7 +38,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
               className="product-detail-image"
             />
           </div>
-          <div className="small-images-container">
+          {/* <div className="small-images-container">
             {productdata.images?.map((img: string, i: any) => {
               return (
                 <Image
@@ -54,7 +54,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
                 />
               );
             })}
-          </div>
+          </div> */}
         </div>
         <div className="product-detail-desc">
           <h1>{productdata.name ? productdata.name : ""}</h1>
@@ -100,11 +100,11 @@ function ProductDetails({ productdata, allproducts }: Props) {
       <div className="maylike-products-wrapper">
         <h2>You may also like</h2>
         <div className="marquee">
-          <div className="maylike-products-container track">
+          {/* <div className="maylike-products-container track">
             {allproducts?.map((product) => {
               return <Product product={product} key={product.name} />;
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
