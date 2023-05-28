@@ -114,6 +114,7 @@ export default ProductDetails;
 
 export async function getStaticProps({ params }: GetStaticPropsContext) {
   if (!params || !params.slug) {
+    params = { slug: "watch" };
     // Handle the case when the `slug` parameter is not present
     return {
       notFound: true,
