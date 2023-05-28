@@ -8,7 +8,7 @@ function Navbar() {
   return (
     <div className="navbar-container pb-[15px]">
       <p className="logo">
-        <Link href={`/`}>Mikey Headphones</Link>
+        <Link href={`/`}>SoundKit Mart</Link>
       </p>
       <button
         type="button"
