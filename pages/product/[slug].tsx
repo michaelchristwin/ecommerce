@@ -19,7 +19,7 @@ interface Props {
 
 function ProductDetails({ productdata, allproducts }: Props) {
   console.log(productdata);
-  // const { images, name, details, price, slug } = productdata;
+  const { images, name, details, price, slug } = productdata;
   const [index, setIndex] = useState(0);
   const { qty, inc, dec, onAdd } = useStateContext();
   //console.log(images);
@@ -29,16 +29,16 @@ function ProductDetails({ productdata, allproducts }: Props) {
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            {/* <Image
+            <Image
               src={`/images${images[index]}`}
               width={350}
               height={350}
               alt="product"
               className="product-detail-image"
-            /> */}
+            />
           </div>
           <div className="small-images-container">
-            {/* {images?.map((img: string, i: any) => {
+            {images?.map((img: string, i: any) => {
               return (
                 <Image
                   src={`/images${img}`}
@@ -52,7 +52,7 @@ function ProductDetails({ productdata, allproducts }: Props) {
                   }
                 />
               );
-            })} */}
+            })}
           </div>
         </div>
         <div className="product-detail-desc">
@@ -68,8 +68,8 @@ function ProductDetails({ productdata, allproducts }: Props) {
             <p>(20)</p>
           </div>
           <h4>Details:</h4>
-          {/* <p>{details}</p> */}
-          {/* <p className="price">${price}</p> */}
+          <p>{details}</p>
+          <p className="price">${price}</p>
           <div className="quantity">
             <h3>Quantity</h3>
             <p className="quantity-desc flex">
@@ -99,11 +99,11 @@ function ProductDetails({ productdata, allproducts }: Props) {
       <div className="maylike-products-wrapper">
         <h2>You may also like</h2>
         <div className="marquee">
-          {/* <div className="maylike-products-container track">
+          <div className="maylike-products-container track">
             {allproducts.map((product) => {
               return <Product product={product} key={product.name} />;
             })}
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
