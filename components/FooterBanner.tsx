@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BannerData } from "./interfaces";
+import { BannerData } from "./types";
 import Image from "next/image";
 
 type FooterBannerProps = {

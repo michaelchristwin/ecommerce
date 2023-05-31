@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ProductProps } from "./interfaces";
+import { ProductProps } from "./types";
 import Link from "next/link";
 
 function Product({ product }: ProductProps) {

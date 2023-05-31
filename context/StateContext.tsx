@@ -1,17 +1,17 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 
-interface StateContextProps {
+type StateContextProps = {
   children: React.ReactNode;
-}
+};
 
-interface Product {
+type Product = {
   name: string;
   price: number;
   quantity: number;
-}
+};
 
-interface State {
+type State = {
   showCart: boolean;
   setShowCart: (newValue: boolean) => void;
   cartItems: any[];
@@ -23,7 +23,7 @@ interface State {
   onAdd: (product: any, quantity: number) => void;
   toggleCartItemQuantity: (name: string, value: string) => void;
   onRemove: (product: Product) => void;
-}
+};
 
 const Context = createContext<State | undefined>(undefined);
 

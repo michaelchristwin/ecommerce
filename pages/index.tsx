@@ -1,6 +1,6 @@
 import { Product, FooterBanner, HeroBanner, Footer } from "@/components";
 import axios from "axios";
-import { BannerData, HomeProps, ProductData } from "../components/interfaces";
+import { BannerData, HomeProps, ProductData } from "../components/types";
 
 function Home({ productdata, bannerdata }: HomeProps) {
   return (

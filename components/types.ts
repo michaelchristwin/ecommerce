@@ -1,18 +1,18 @@
-export interface ProductData {
+export type ProductData = {
   name: string;
   images: string[];
   price: number;
   details: string;
   slug: string;
-}
-export interface Image {
+};
+export type Image = {
   image: string;
-}
+};
 export type HomeProps = {
   productdata: ProductData[];
   bannerdata: BannerData[];
 };
-export interface BannerData {
+export type BannerData = {
   image: string;
   buttonText: string;
   product: string;
@@ -23,7 +23,7 @@ export interface BannerData {
   largeText2: string;
   discount: string;
   saleTime: string;
-}
-export interface ProductProps {
+};
+export type ProductProps = {
   product: ProductData;
-}
+};

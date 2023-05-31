@@ -1,5 +1,5 @@
 import { Product } from "@/components";
-import { ProductData } from "@/components/interfaces";
+import { ProductData } from "@/components/types";
 import { useStateContext } from "@/context/StateContext";
 import axios from "axios";
 import dynamic from "next/dynamic";

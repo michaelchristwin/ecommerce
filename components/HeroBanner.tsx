@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BannerData } from "./interfaces";
+import { BannerData } from "./types";
 
 interface HeroBannerProps {
   heroBanner: BannerData;
